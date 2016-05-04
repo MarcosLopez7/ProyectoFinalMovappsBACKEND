@@ -36,7 +36,7 @@ class Categoria(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
-    precio = models.DecimalField()
+    precio = models.DecimalField(max_digits=12, decimal_places=2)
     foto = models.ImageField(upload_to='images/producto')
     ultima_modificacion = models.CharField(max_length=60)
     aprobado = models.BooleanField(default=False)
@@ -49,7 +49,7 @@ class Producto(models.Model):
 
 class Flete(models.Model):
     nombre = models.CharField(max_length=50)
-    precio = models.DecimalField()
+    precio = models.DecimalField(max_digits=12, decimal_places=2)
 
     def __str__(self):
         return self.nombre
@@ -58,8 +58,8 @@ class Compra(models.Model):
     producto = models.ForeignKey(Producto)
     cliente = models.ForeignKey(Usuario)
     entregado = models.BooleanField(default=False)
-    precio_total = models.DecimalField()
+    precio_total = models.DecimalField(max_digits=12, decimal_places=2)
     metodo_pago = models.CharField(max_length=40)
-    coordenadasX = models.DecimalField()
-    coordenadasY = models.DecimalField()
+    coordenadasX = models.DecimalField(max_digits=12, decimal_places=2)
+    coordenadasY = models.DecimalField(max_digits=12, decimal_places=2)
     flete = models.ForeignKey(Flete)
