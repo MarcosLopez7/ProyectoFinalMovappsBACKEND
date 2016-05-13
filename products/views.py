@@ -2,7 +2,7 @@ from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import viewsets
 from .models import *
-from serializers import UsuarioSerializer
+from .serializers import UsuarioSerializer
 # Create your views here.
 
 class UsuarioViewSet(viewsets.ModelViewSet):
