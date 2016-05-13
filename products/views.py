@@ -1,7 +1,14 @@
 from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-
+from rest_framework import viewsets
+from .models import *
+from .serializers import *
 # Create your views here.
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    usuarios = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+
 @csrf_protect
 def login(request):
 
