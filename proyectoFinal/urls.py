@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from products import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 router.register(r'usuarios', views.UsuarioViewSet, 'Usuarios')
@@ -30,3 +31,4 @@ urlpatterns = [
 ]
 
 urlpatterns += router.urls
+urlpatterns += staticfiles_urlpatterns()

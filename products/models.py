@@ -7,9 +7,9 @@ class Usuario(models.Model):
     email = models.EmailField()
     contrasena = models.CharField(max_length=255)
     telefono = models.CharField(max_length=12)
-    foto = models.ImageField(upload_to='images/usuario', default='images/no-img.png')
+    foto = models.ImageField(upload_to='assets/images/usuario', default='assets/images/no-img.png')
     administrador = models.BooleanField(default=False)
-    video = models.FileField(upload_to='videos', default='images/no-img.png')
+    video = models.FileField(upload_to='assets/videos', default='assets/images/no-img.png')
 
     def __str__(self):
         return "{0} {1}".format(self.nombre, self.apellidos)
@@ -37,7 +37,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=12, decimal_places=2)
-    foto = models.ImageField(upload_to='images/producto')
+    foto = models.ImageField(upload_to='assets/images/producto')
     ultima_modificacion = models.CharField(max_length=60)
     aprobado = models.BooleanField(default=False)
     vendido = models.BooleanField(default=False)
