@@ -6,9 +6,9 @@ from .serializers import UsuarioSerializer
 # Create your views here.
 
 class UsuarioViewSet(viewsets.ModelViewSet):
-    usuarios = Usuario.objects.all()
+    queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
-"""
+
 @csrf_protect
 def login(request):
 
@@ -19,4 +19,4 @@ def login(request):
 
     else:
         return HttpResponse("Probando")
-"""
+
