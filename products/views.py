@@ -2,7 +2,13 @@ from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import viewsets
 from .models import *
-from .serializers import UsuarioSerializer, CreateUsuarioSerializer
+from .serializers import (
+    UsuarioSerializer,
+    CreateUsuarioSerializer,
+    CreateCategoriaSerializer,
+    CreateProductoSerializer
+)
+
 from rest_framework.generics import (
     CreateAPIView
 )
@@ -16,7 +22,13 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
+class CategoriaCreateAPIView(CreateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CreateCategoriaSerializer
 
+class ProductoCreateAPIView(CreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = CreateProductoSerializer
 
 @csrf_protect
 def login(request):

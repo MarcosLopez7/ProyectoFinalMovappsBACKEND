@@ -11,3 +11,14 @@ class CreateUsuarioSerializer(ModelSerializer):
     class Meta:
         model = Usuario
         fields = ('nombre', 'apellidos', 'email', 'contrasena', 'telefono', 'foto', 'administrador', 'video')
+
+class CreateCategoriaSerializer(ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('nombre', 'descripcion')
+
+class CreateProductoSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
+                  'categoria')
