@@ -1,7 +1,10 @@
 from django.conf.urls import url
 
-from . import views
+from .views import (
+    UsuarioCreateAPIView
+)
+
 
 urlpatterns = [
-    url(r'^login/', views.login),
+    url(r'^create/$', UsuarioCreateAPIView.as_view(), name='create'),
 ]
