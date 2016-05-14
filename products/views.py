@@ -6,7 +6,8 @@ from .serializers import (
     UsuarioSerializer,
     CreateUsuarioSerializer,
     CreateCategoriaSerializer,
-    CreateProductoSerializer
+    CreateProductoSerializer,
+    ProductoSerializer
 )
 
 from rest_framework.generics import (
@@ -21,6 +22,10 @@ class UsuarioCreateAPIView(CreateAPIView):
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
 
 class CategoriaCreateAPIView(CreateAPIView):
     queryset = Categoria.objects.all()

@@ -17,6 +17,12 @@ class CreateCategoriaSerializer(ModelSerializer):
         model = Categoria
         fields = ('nombre', 'descripcion')
 
+class ProductoSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
+                  'categoria')
+
 class CreateProductoSerializer(ModelSerializer):
     class Meta:
         model = Producto

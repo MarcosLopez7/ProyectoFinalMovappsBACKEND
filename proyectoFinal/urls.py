@@ -21,6 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 router.register(r'usuarios', views.UsuarioViewSet, 'Usuarios')
+router.register(r'productos', views.ProductoViewSet)
 
 from . import views
 
