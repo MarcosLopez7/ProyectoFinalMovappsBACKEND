@@ -28,3 +28,9 @@ class CreateProductoSerializer(ModelSerializer):
         model = Producto
         fields = ('nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
                   'categoria')
+
+class CreateCompraSerializer(ModelSerializer):
+    class Meta:
+        model = Compra
+        fields = ('producto', 'cliente', 'entregado', 'precio_total', 'metodo_pago', 'coordenadasX', 'coordenadasY',
+                  'flete')

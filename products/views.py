@@ -7,7 +7,8 @@ from .serializers import (
     CreateUsuarioSerializer,
     CreateCategoriaSerializer,
     CreateProductoSerializer,
-    ProductoSerializer
+    ProductoSerializer,
+    CreateCompraSerializer
 )
 
 from rest_framework.generics import (
@@ -34,6 +35,11 @@ class CategoriaCreateAPIView(CreateAPIView):
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = CreateProductoSerializer
+
+class CompraCreateAPIView(CreateAPIView):
+    queryset = Compra.objects.all()
+    serializer_class = CreateCompraSerializer
+
 
 @csrf_protect
 def login(request):
