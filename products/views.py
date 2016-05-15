@@ -66,8 +66,8 @@ class UsuarioLoginAPIView(APIView):
         search_fields = ['email', 'contrasena']
 
         if serializer.is_valid():
-            email = self.request['email']
-            contrasena = self.request['contrasena']
+            email = self.request.data['email']
+            contrasena = self.request.data['contrasena']
             usuario = Usuario.objects.filter(email=email, contrasena=contrasena)
             """
             query = serializer.data
