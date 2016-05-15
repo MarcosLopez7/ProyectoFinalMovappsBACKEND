@@ -68,6 +68,11 @@ class CategoriaDetailSerializer(ModelSerializer):
         model = Categoria
         fields = ('pk', 'nombre', 'descripcion')
 
+class CategoriaListSerializer(ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('pk', 'nombre', 'descripcion')
+
 class CompraDetailSerializer(ModelSerializer):
     class Meta:
         model = Compra

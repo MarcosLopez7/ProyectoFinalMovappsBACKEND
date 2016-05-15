@@ -29,6 +29,7 @@ from .serializers import (
     UsuarioListSerializer,
     UsuarioLoginSerializer,
     FleteListSerializer,
+    CategoriaListSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -113,6 +114,10 @@ class ProductoDestroyAPIView(DestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoDetailSerializer
     lookup_field = 'pk'
+
+class CategoriaListAPIView(RetrieveAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaListSerializer
 
 class CompraCreateAPIView(CreateAPIView):
     queryset = Compra.objects.all()
