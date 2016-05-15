@@ -5,6 +5,8 @@ from rest_framework import viewsets
 from django.db.models import Q
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import Http404
+from rest_framework import status
 
 from .models import *
 from .serializers import (
@@ -51,21 +53,13 @@ class CategoriaCreateAPIView(CreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CreateCategoriaSerializer
 
-class UsuarioLoginAPIView(ListAPIView):
-    serializer_class = UsuarioLoginSerializer
+class UsuarioLoginAPIView(APIView):
 
-    @api_view(['GET', 'POST'])
-    def get_queryset(self, *args, **kwargs):
-        queryset_list = Usuario.objects.all()
-        if self.request.method == "GET":
-            query = self.request.GET.get("q")
-            if query:
-                queryset_list = queryset_list.get(
-                    Q(email=query)|
-                    Q(contrasena=query)
-                )
-            return queryset_list
-
+    def post(self, request, format=None):
+        serializer = UsuarioLoginAPIView(data=request.data)
+        if serializer.is_valid():
+            return Response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
