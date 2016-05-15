@@ -56,10 +56,17 @@ class CategoriaCreateAPIView(CreateAPIView):
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
+        queryset_list = Usuario.objects.all()
         serializer = UsuarioLoginSerializer(data=request.data)
         if serializer.is_valid():
-            usuario = Usuario.objects.get(email=serializer.data.email, contrasena=serializer.data.contrasena)
-            return Response(usuario, status=status.HTTP_201_CREATED)
+            query = serializer.data
+            if query:
+                queryset_list = queryset_list.get(
+                    Q(email=query)|
+                    Q(contrasena=query)
+                )
+
+            return Response(queryset_list, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProductoCreateAPIView(CreateAPIView):
