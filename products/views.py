@@ -57,7 +57,7 @@ class UsuarioLoginAPIView(ListAPIView):
             'email': request.email,
             'request': request.contrasena
         }
-        return Response(content)
+        return content
 
 """
     def get_queryset(self, *args, **kwargs):
