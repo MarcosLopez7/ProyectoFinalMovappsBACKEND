@@ -56,7 +56,7 @@ class CategoriaCreateAPIView(CreateAPIView):
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
-        serializer = UsuarioLoginAPIView(data=request.data)
+        serializer = UsuarioLoginSerializer(data=request.data)
         if serializer.is_valid():
             return Response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
