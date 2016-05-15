@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 from rest_framework.filters import (
     SearchFilter
 )
@@ -67,7 +68,7 @@ class UsuarioLoginAPIView(APIView):
         if serializer.is_valid():
             query = serializer.data
             if query:
-                queryset_list = queryset_list.get(
+                queryset_list = queryset_list.filter(
                     Q(email=query)|
                     Q(contrasena=query)
                 )
