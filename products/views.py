@@ -66,14 +66,18 @@ class UsuarioLoginAPIView(APIView):
         search_fields = ['email', 'contrasena']
 
         if serializer.is_valid():
+            email = self.request.email
+            contrasena = self.request.contrasena
+            usuario = Usuario.objects.filter(email=email, contrasena=contrasena)
+            """
             query = serializer.data
             if query:
                 queryset_list = queryset_list.filter(
                     Q(email=query)|
                     Q(contrasena=query)
                 )
-
-            return Response(queryset_list, status=status.HTTP_201_CREATED)
+            """
+            return Response(usuario, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProductoCreateAPIView(CreateAPIView):
