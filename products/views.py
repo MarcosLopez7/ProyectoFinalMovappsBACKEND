@@ -2,6 +2,8 @@ from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import viewsets
 from django.db.models import Q
+from rest_framework.response import Response
+
 from .models import *
 from .serializers import (
     UsuarioSerializer,
@@ -50,6 +52,14 @@ class CategoriaCreateAPIView(CreateAPIView):
 class UsuarioLoginAPIView(ListAPIView):
     serializer_class = UsuarioLoginSerializer
 
+    def get(self, request, *args, **kwargs):
+        content = {
+            'email': request.email,
+            'request': request.contrasena
+        }
+        return Response(content)
+
+"""
     def get_queryset(self, *args, **kwargs):
         queryset_list = Usuario.objects.all()
         if self.request.method == "POST":
@@ -61,7 +71,7 @@ class UsuarioLoginAPIView(ListAPIView):
                 )
             return queryset_list
 
-
+"""
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = CreateProductoSerializer
