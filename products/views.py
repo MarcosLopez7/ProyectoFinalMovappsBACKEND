@@ -52,13 +52,15 @@ class UsuarioLoginAPIView(ListAPIView):
 
     def get_queryset(self, *args, **kwargs):
         queryset_list = Usuario.objects.all()
-        query = self.request.data
-        if query:
-            queryset_list = queryset_list.get(
-                Q(email=query)|
-                Q(contrasena=query)
-            )
-        return queryset_list
+        if self.request.method == "POST":
+            query = self.request.data
+            if query:
+                queryset_list = queryset_list.get(
+                    Q(email=query)|
+                    Q(contrasena=query)
+                )
+            return queryset_list
+
 
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
