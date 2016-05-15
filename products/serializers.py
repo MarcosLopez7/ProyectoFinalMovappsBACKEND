@@ -12,7 +12,7 @@ class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
 class UsuarioListSerializer(ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('nombre', 'apellidos', 'email', 'contrasena', 'telefono', 'foto', 'administrador', 'video')
+        fields = ('email', 'contrasena')
 
 class UsuarioLoginSerializer(ModelSerializer):
     class Meta:
