@@ -1,6 +1,7 @@
 from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import viewsets
+from django.db.models import Q
 from .models import *
 from .serializers import (
     UsuarioSerializer,
@@ -14,6 +15,7 @@ from .serializers import (
     CategoriaDetailSerializer,
     CompraDetailSerializer,
     DireccionDetailSerializer,
+    UsuarioListSerializer,
     UsuarioLoginSerializer,
 )
 from rest_framework.permissions import AllowAny
@@ -25,6 +27,7 @@ from rest_framework.generics import (
     RetrieveAPIView,
     UpdateAPIView,
     DestroyAPIView,
+    ListAPIView,
 )
 # Create your views here.
 
@@ -44,7 +47,18 @@ class CategoriaCreateAPIView(CreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CreateCategoriaSerializer
 
+class UsuarioLoginAPIView(ListAPIView):
+    serializer_class = UsuarioLoginSerializer
 
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Usuario.objects.all()
+        query = self.request.data
+        if query:
+            queryset_list = queryset_list.get(
+                Q(email=query)|
+                Q(contrasena=query)
+            )
+        return queryset_list
 
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
