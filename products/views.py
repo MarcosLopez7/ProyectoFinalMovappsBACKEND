@@ -18,7 +18,8 @@ from rest_framework.views import APIView
 
 from rest_framework.generics import (
     CreateAPIView,
-    RetrieveAPIView
+    RetrieveAPIView,
+    UpdateAPIView
 )
 # Create your views here.
 
@@ -42,7 +43,12 @@ class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = CreateProductoSerializer
 
-class ProductoUpdateAPIView(RetrieveAPIView):
+class ProductoUpdateAPIView(UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoDetailSerializer
+    lookup_field = 'id'
+
+class ProductoDetailAPIView(RetrieveAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoDetailSerializer
     lookup_field = 'id'
