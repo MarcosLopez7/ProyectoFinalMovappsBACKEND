@@ -6,7 +6,8 @@ from .views import (
     ProductoCreateAPIView,
     CompraCreateAPIView,
     ProductoUpdateAPIView,
-    ProductoDetailAPIView
+    ProductoDetailAPIView,
+    ProductoDestroyAPIView
 )
 
 
@@ -17,4 +18,5 @@ urlpatterns = [
     url(r'^createcompra/$', CompraCreateAPIView.as_view(), name='createcompra'),
     url(r'edit/(?P<pk>\d+)/$', ProductoUpdateAPIView.as_view(), name='updateproducto'),
     url(r'(?P<pk>\d+)/$', ProductoDetailAPIView.as_view(), name='producto'),
+    url(r'delete/(?P<pk>\d+)/$', ProductoDestroyAPIView.as_view(), name='destroyproducto'),
 ]
