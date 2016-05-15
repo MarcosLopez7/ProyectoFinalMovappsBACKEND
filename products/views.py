@@ -58,6 +58,18 @@ class CategoriaCreateAPIView(CreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CreateCategoriaSerializer
 
+class UsuarioUpdateAPIView(UpdateAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioDetailSerializer
+
+class UsuarioDestroyAPIView(DestroyAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioDetailSerializer
+
+class UsuarioDetailAPIView(RetrieveAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioDetailSerializer
+
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
@@ -80,7 +92,7 @@ class UsuarioLoginAPIView(APIView):
                 )
             """
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response("error papi", status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()

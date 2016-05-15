@@ -18,11 +18,17 @@ from .views import (
     DireccionUpdateAPIView,
     DireccionDestroyAPIView,
     UsuarioLoginAPIView,
+    UsuarioDestroyAPIView,
+    UsuarioUpdateAPIView,
+    UsuarioDetailAPIView,
 )
 
 
 urlpatterns = [
     url(r'^login/$', UsuarioLoginAPIView.as_view(), name='login'),
+    url(r'^usuario/(?P<pk>\d+)/$', UsuarioDetailAPIView.as_view(), name='usuario'),
+    url(r'^updateusuario/(?P<pk>\d+)/$', UsuarioUpdateAPIView.as_view(), name='updateusuario'),
+    url(r'^destroyusuario/(?P<pk>\d+)/$', UsuarioDestroyAPIView.as_view(), name='destroyusuario'),
     url(r'^create/$', UsuarioCreateAPIView.as_view(), name='create'),
     url(r'^createcategoria/$', CategoriaCreateAPIView.as_view(), name='createcategoria'),
     url(r'^createproduct/$', ProductoCreateAPIView.as_view(), name='createproduct'),
