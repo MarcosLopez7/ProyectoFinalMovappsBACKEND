@@ -70,7 +70,7 @@ class UsuarioLoginAPIView(APIView):
             email = self.request.data['email']
             contrasena = self.request.data['contrasena']
             usuario = Usuario.objects.filter(email=email, contrasena=contrasena)
-            serializer = UsuarioDetailSerializer(usuario)
+            serializer = UsuarioDetailSerializer(usuario[0])
             """
             query = serializer.data
             if query:
