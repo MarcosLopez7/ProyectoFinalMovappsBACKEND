@@ -60,7 +60,7 @@ class UsuarioLoginAPIView(APIView):
         serializer = UsuarioLoginSerializer(data=request.data)
         if serializer.is_valid():
             query = serializer.data
-            print(query)
+            print(query.email)
             if query:
                 queryset_list = queryset_list.get(
                     Q(email=query)|
