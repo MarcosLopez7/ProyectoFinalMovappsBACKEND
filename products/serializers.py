@@ -14,6 +14,11 @@ class UsuarioListSerializer(ModelSerializer):
         model = Usuario
         fields = ('email', 'contrasena')
 
+class UsuarioDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ('nombre', 'apellidos', 'email', 'contrasena', 'telefono', 'foto', 'administrador', 'video')
+
 class UsuarioLoginSerializer(ModelSerializer):
     class Meta:
         model = Usuario
