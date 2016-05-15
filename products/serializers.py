@@ -39,7 +39,7 @@ class CreateProductoSerializer(ModelSerializer):
 class ProductoDetailSerializer(ModelSerializer):
     class Meta:
         model = Producto
-        fields = ('id', 'nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
+        fields = ('pk', 'nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
                   'categoria')
 
 class CreateCompraSerializer(ModelSerializer):

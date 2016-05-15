@@ -46,12 +46,12 @@ class ProductoCreateAPIView(CreateAPIView):
 class ProductoUpdateAPIView(UpdateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoDetailSerializer
-    lookup_field = 'id'
+    lookup_field = 'pk'
 
 class ProductoDetailAPIView(RetrieveAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoDetailSerializer
-    lookup_field = 'id'
+    lookup_field = 'pk'
 
 class CompraCreateAPIView(CreateAPIView):
     queryset = Compra.objects.all()
