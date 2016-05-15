@@ -79,7 +79,7 @@ class UsuarioLoginAPIView(APIView):
                     Q(contrasena=query)
                 )
             """
-            return Response(serializer, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response("error papi", status=status.HTTP_400_BAD_REQUEST)
 
 class ProductoCreateAPIView(CreateAPIView):
