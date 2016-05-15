@@ -10,7 +10,11 @@ from .serializers import (
     ProductoSerializer,
     CreateCompraSerializer,
     ProductoDetailSerializer,
-    UsuarioLoginSerializer
+    CreateDireccionSerializer,
+    CategoriaDetailSerializer,
+    CompraDetailSerializer,
+    DireccionDetailSerializer,
+    UsuarioLoginSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -40,6 +44,8 @@ class CategoriaCreateAPIView(CreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CreateCategoriaSerializer
 
+
+
 class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = CreateProductoSerializer
@@ -62,6 +68,50 @@ class ProductoDestroyAPIView(DestroyAPIView):
 class CompraCreateAPIView(CreateAPIView):
     queryset = Compra.objects.all()
     serializer_class = CreateCompraSerializer
+
+class DireccionCreateAPIView(CreateAPIView):
+    queryset = Direccion.objects.all()
+    serializer_class = CreateDireccionSerializer
+
+class CategoriaUpdateAPIView(UpdateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaDetailSerializer
+    lookup_field = 'pk'
+
+class CategoriaDestroyAPIView(DestroyAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaDetailSerializer
+    lookup_field = 'pk'
+
+class CompraDetailAPIView(RetrieveAPIView):
+    queryset = Compra.objects.all()
+    serializer_class = CompraDetailSerializer
+    lookup_field = 'pk'
+
+class CompraUpdateAPIView(UpdateAPIView):
+    queryset = Compra.objects.all()
+    serializer_class = CompraDetailSerializer
+    lookup_field = 'pk'
+
+class CompraDestroyAPIView(DestroyAPIView):
+    queryset = Compra.objects.all()
+    serializer_class = CompraDetailSerializer
+    lookup_field = 'pk'
+
+class DireccionDetailAPIView(RetrieveAPIView):
+    queryset = Direccion.objects.all()
+    serializer_class = DireccionDetailSerializer
+    lookup_field = 'pk'
+
+class DireccionUpdateAPIView(UpdateAPIView):
+    queryset = Direccion.objects.all()
+    serializer_class = DireccionDetailSerializer
+    lookup_field = 'pk'
+
+class DireccionDestroyAPIView(DestroyAPIView):
+    queryset = Direccion.objects.all()
+    serializer_class = DireccionDetailSerializer
+    lookup_field = 'pk'
 """
 class UsuarioLoginAPIView(APIView):
     permission_classes = [AllowAny]

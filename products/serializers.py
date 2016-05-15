@@ -47,3 +47,24 @@ class CreateCompraSerializer(ModelSerializer):
         model = Compra
         fields = ('producto', 'cliente', 'entregado', 'precio_total', 'metodo_pago', 'coordenadasX', 'coordenadasY',
                   'flete')
+
+class CreateDireccionSerializer(ModelSerializer):
+    class Meta:
+        model = Direccion
+        fields = ('ciudad', 'municipio', 'codigo_postal', 'direccion', 'colonia', 'usuario')
+
+class CategoriaDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('pk', 'nombre', 'descripcion')
+
+class CompraDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Compra
+        fields = ('pk', 'producto', 'cliente', 'entregado', 'precio_total', 'metodo_pago', 'coordenadasX', 'coordenadasY',
+                  'flete')
+
+class DireccionDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Direccion
+        fields = ('pk', 'ciudad', 'municipio', 'codigo_postal', 'direccion', 'colonia', 'usuario')
