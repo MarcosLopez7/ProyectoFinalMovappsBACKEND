@@ -70,6 +70,10 @@ class UsuarioDetailAPIView(RetrieveAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioDetailSerializer
 
+class ProductosNotApprovedAPIView(ListAPIView):
+    queryset = Producto.objects.filter(aprobado=False)
+    serializer_class = ProductoDetailSerializer
+
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):

@@ -17,7 +17,7 @@ class UsuarioListSerializer(ModelSerializer):
 class UsuarioDetailSerializer(ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('nombre', 'apellidos', 'email', 'contrasena', 'telefono', 'foto', 'administrador', 'video')
+        fields = ('pk', 'nombre', 'apellidos', 'email', 'contrasena', 'telefono', 'foto', 'administrador', 'video')
 
 class UsuarioLoginSerializer(ModelSerializer):
     class Meta:
@@ -37,7 +37,7 @@ class CreateCategoriaSerializer(ModelSerializer):
 class ProductoSerializer(ModelSerializer):
     class Meta:
         model = Producto
-        fields = ('nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
+        fields = ('pk', 'nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
                   'categoria')
 
 class CreateProductoSerializer(ModelSerializer):
