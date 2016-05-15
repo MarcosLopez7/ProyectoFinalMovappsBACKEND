@@ -115,7 +115,7 @@ class ProductoDestroyAPIView(DestroyAPIView):
     serializer_class = ProductoDetailSerializer
     lookup_field = 'pk'
 
-class CategoriaListAPIView(RetrieveAPIView):
+class CategoriaListAPIView(ListAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaListSerializer
 
