@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^createproduct/$', ProductoCreateAPIView.as_view(), name='createproduct'),
     url(r'^createcompra/$', CompraCreateAPIView.as_view(), name='createcompra'),
     url(r'edit/(?P<pk>\d+)/$', ProductoUpdateAPIView.as_view(), name='updateproducto'),
-    url(r'(?P<pk>\d+)/$', ProductoDetailAPIView.as_view(), name='producto'),
     url(r'delete/(?P<pk>\d+)/$', ProductoDestroyAPIView.as_view(), name='deleteproducto'),
     url(r'^createdireccion/$', DireccionCreateAPIView.as_view(), name="createdireccion"),
     url(r'^updatecategoria/(?P<pk>\d+)/$', CategoriaUpdateAPIView.as_view(), name="updatecategoria"),
@@ -37,4 +36,5 @@ urlpatterns = [
     url(r'^direccion/(?P<pk>\d+)/$', DireccionDetailAPIView.as_view(), name="direccion"),
     url(r'^updatedireccion/(?P<pk>\d+)/$', DireccionUpdateAPIView.as_view(), name="updatedireccion"),
     url(r'^deletedireccion/(?P<pk>\d+)/$', DireccionDestroyAPIView.as_view(), name="deletedireccion"),
+    url(r'(?P<pk>\d+)/$', ProductoDetailAPIView.as_view(), name='producto'),
 ]
