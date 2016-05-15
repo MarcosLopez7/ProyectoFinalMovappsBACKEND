@@ -1,4 +1,5 @@
 from django.shortcuts import HttpResponse
+from django.utils import encoding
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import viewsets
 from django.db.models import Q
@@ -63,7 +64,7 @@ class UsuarioLoginAPIView(ListAPIView):
                 Q(email=query)|
                 Q(contrasena=query)
             )
-        return queryset_list
+        return encoding(queryset_list)
 
 
 class ProductoCreateAPIView(CreateAPIView):
