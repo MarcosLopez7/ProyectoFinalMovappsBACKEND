@@ -8,11 +8,17 @@ from .serializers import (
     CreateCategoriaSerializer,
     CreateProductoSerializer,
     ProductoSerializer,
-    CreateCompraSerializer
+    CreateCompraSerializer,
+    ProductoDetailSerializer,
+    UsuarioLoginSerializer
 )
+from rest_framework.permissions import AllowAny
+
+from rest_framework.views import APIView
 
 from rest_framework.generics import (
-    CreateAPIView
+    CreateAPIView,
+    RetrieveAPIView
 )
 # Create your views here.
 
@@ -36,11 +42,23 @@ class ProductoCreateAPIView(CreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = CreateProductoSerializer
 
+class ProductoUpdateAPIView(RetrieveAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoDetailSerializer
+    lookup_field = 'id'
+
 class CompraCreateAPIView(CreateAPIView):
     queryset = Compra.objects.all()
     serializer_class = CreateCompraSerializer
+"""
+class UsuarioLoginAPIView(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = UsuarioLoginSerializer
 
-
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = UsuarioLoginSerializer(data=data)
+"""
 @csrf_protect
 def login(request):
 
