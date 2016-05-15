@@ -28,6 +28,7 @@ from .serializers import (
     UsuarioDetailSerializer,
     UsuarioListSerializer,
     UsuarioLoginSerializer,
+    FleteListSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -86,6 +87,7 @@ class UsuarioLoginAPIView(APIView):
             email = self.request.data['email']
             contrasena = self.request.data['contrasena']
             usuario = Usuario.objects.filter(email=email, contrasena=contrasena)
+            print(usuario[0])
             if len(usuario) != 0:
                 serializer = UsuarioDetailSerializer(usuario[0])
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -159,6 +161,10 @@ class DireccionDestroyAPIView(DestroyAPIView):
     queryset = Direccion.objects.all()
     serializer_class = DireccionDetailSerializer
     lookup_field = 'pk'
+
+class FleteListAPIView(RetrieveAPIView):
+    queryset = Flete.objects.all()
+    serializer_class = FleteListSerializer
 """
 class UsuarioLoginAPIView(APIView):
     permission_classes = [AllowAny]
