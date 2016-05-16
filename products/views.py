@@ -220,7 +220,7 @@ class DireccionDestroyAPIView(DestroyAPIView):
     serializer_class = DireccionDetailSerializer
     lookup_field = 'pk'
 
-class FleteListAPIView(RetrieveAPIView):
+class FleteListAPIView(ListAPIView):
     queryset = Flete.objects.all()
     serializer_class = FleteListSerializer
 
