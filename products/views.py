@@ -94,7 +94,7 @@ class ProductoByTextAPIView(ListAPIView):
     serializer_class = ProductoDetailSerializer
     filter_backends = [SearchFilter]
     search_fields = ['nombre', 'descripcion']
-
+    #no joda
     def get_queryset(self, *args, **kwargs):
         queryset_list = Producto.objects.filter(vendido=False, aprobado=True)
         query = self.request.GET.get("text")
