@@ -31,6 +31,7 @@ from .serializers import (
     FleteListSerializer,
     CategoriaListSerializer,
     UpdateAprobacionSerializer,
+    UpdateVentaSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -101,6 +102,30 @@ class ProductoByTextAPIView(ListAPIView):
             queryset_list = queryset_list.filter(
                 Q(nombre__icontains=query)|
                 Q(descripcion__icontains=query)
+            )
+        return queryset_list
+
+class ProductoByUserVendidoAPIView(ListAPIView):
+    serializer_class = ProductoDetailSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Producto.objects.filter(vendido=True)
+        query = self.request.GET.get("owner")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(usuario__id=query)
+            )
+        return queryset_list
+
+class ProductoByUserCompradoAPIView(ListAPIView):
+    serializer_class = ProductoDetailSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Producto.objects.filter(vendido=True)
+        query = self.request.GET.get("client")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(compra__cliente=query)
             )
         return queryset_list
 
@@ -203,4 +228,12 @@ class UpdateProductoAprobacionAPIVIew(UpdateAPIView):
     queryset = Producto.objects.all()
     serializer_class = UpdateAprobacionSerializer
     lookup_field = 'pk'
+
+class UpdateProductoVentaAPIVIew(UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = UpdateVentaSerializer
+    lookup_field = 'pk'
+
+
+
 

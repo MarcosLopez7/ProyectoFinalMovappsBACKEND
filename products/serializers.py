@@ -93,3 +93,8 @@ class UpdateAprobacionSerializer(ModelSerializer):
     class Meta:
         model = Producto
         fields = ('ultima_modificacion', 'aprobado')
+
+class UpdateVentaSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('ultima_modificacion', 'vendido')

@@ -27,6 +27,9 @@ from .views import (
     ProductosByCategoriaAPIView,
     ProductoByTextAPIView,
     UpdateProductoAprobacionAPIVIew,
+    UpdateProductoVentaAPIVIew,
+    ProductoByUserVendidoAPIView,
+    ProductoByUserCompradoAPIView,
 )
 
 
@@ -56,5 +59,8 @@ urlpatterns = [
     url(r'^productobycategoria/$', ProductosByCategoriaAPIView.as_view(), name="pbyc"),
     url(r'^productobytext/$', ProductoByTextAPIView.as_view(), name="pbyt"),
     url(r'^aprobar/(?P<pk>\d+)/$', UpdateProductoAprobacionAPIVIew.as_view(), name="aprobar"),
+    url(r'^venta/(?P<pk>\d+)/$', UpdateProductoVentaAPIVIew.as_view(), name="vender"),
+    url(r'^vendidos/$', ProductoByUserVendidoAPIView.as_view(), name="vendidos"),
+    url(r'^comprados/$', ProductoByUserCompradoAPIView.as_view(), name="comprados"),
     url(r'(?P<pk>\d+)/$', ProductoDetailAPIView.as_view(), name='producto'),
 ]
