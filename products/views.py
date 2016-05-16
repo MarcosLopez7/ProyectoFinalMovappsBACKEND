@@ -76,6 +76,18 @@ class ProductosNotApprovedAPIView(ListAPIView):
     queryset = Producto.objects.filter(aprobado=False)
     serializer_class = ProductoDetailSerializer
 
+class ProductosByCategoriaAPIView(ListAPIView):
+    serializer_class = ProductoDetailSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list =  Producto.objects.all()
+        query = self.request.GET.get("categoria")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(categoria__id=query)
+            )
+        return queryset_list
+
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
