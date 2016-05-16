@@ -82,7 +82,7 @@ class ProductosByCategoriaAPIView(ListAPIView):
     serializer_class = ProductoDetailSerializer
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list =  Producto.objects.all()
+        queryset_list =  Producto.objects.filter(vendido=False, aprobado=True)
         query = self.request.GET.get("categoria")
         if query:
             queryset_list = queryset_list.filter(
@@ -96,7 +96,7 @@ class ProductoByTextAPIView(ListAPIView):
     search_fields = ['nombre', 'descripcion']
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list = Producto.objects.all()
+        queryset_list = Producto.objects.filter(vendido=False, aprobado=True)
         query = self.request.GET.get("text")
         if query:
             queryset_list = queryset_list.filter(
