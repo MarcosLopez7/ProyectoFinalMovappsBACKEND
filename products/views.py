@@ -129,6 +129,22 @@ class ProductoByUserCompradoAPIView(ListAPIView):
             )
         return queryset_list
 
+class UsuarioByNameAPIView(ListAPIView):
+    serializer_class = UsuarioDetailSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['nombre', 'apellidos', 'email']
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Usuario.objects.all()
+        query = self.request.GET.get("text")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(nombre__icontains=query)|
+                Q(apellidos__icontains=query)|
+                Q(email__icontains=query)
+            )
+        return queryset_list
+
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
@@ -233,6 +249,7 @@ class UpdateProductoVentaAPIVIew(UpdateAPIView):
     queryset = Producto.objects.all()
     serializer_class = UpdateVentaSerializer
     lookup_field = 'pk'
+
 
 
 

@@ -30,6 +30,7 @@ from .views import (
     UpdateProductoVentaAPIVIew,
     ProductoByUserVendidoAPIView,
     ProductoByUserCompradoAPIView,
+    UsuarioByNameAPIView,
 )
 
 
@@ -62,5 +63,6 @@ urlpatterns = [
     url(r'^venta/(?P<pk>\d+)/$', UpdateProductoVentaAPIVIew.as_view(), name="vender"),
     url(r'^vendidos/$', ProductoByUserVendidoAPIView.as_view(), name="vendidos"),
     url(r'^comprados/$', ProductoByUserCompradoAPIView.as_view(), name="comprados"),
+    url(r'^usuarionombre/$', UsuarioByNameAPIView.as_view(), name="usuarionombre"),
     url(r'(?P<pk>\d+)/$', ProductoDetailAPIView.as_view(), name='producto'),
 ]
