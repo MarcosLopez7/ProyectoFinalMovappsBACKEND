@@ -58,7 +58,7 @@ class Compra(models.Model):
     producto = models.ForeignKey(Producto)
     cliente = models.ForeignKey(Usuario)
     entregado = models.BooleanField(default=False)
-    precio_total = models.DecimalField(max_digits=40, decimal_places=20)
+    precio_total = models.DecimalField(max_digits=12, decimal_places=2)
     metodo_pago = models.CharField(max_length=40)
     coordenadasX = models.DecimalField(max_digits=40, decimal_places=20)
     coordenadasY = models.DecimalField(max_digits=40, decimal_places=20)
