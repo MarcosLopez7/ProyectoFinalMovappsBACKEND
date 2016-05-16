@@ -84,7 +84,7 @@ class DireccionDetailSerializer(ModelSerializer):
         model = Direccion
         fields = ('pk', 'ciudad', 'municipio', 'codigo_postal', 'direccion', 'colonia', 'usuario')
 
-class FleteListSerializer():
+class FleteListSerializer(ModelSerializer):
     class Meta:
         model = Flete
         fields = ('pk', 'nombre', 'precio')
