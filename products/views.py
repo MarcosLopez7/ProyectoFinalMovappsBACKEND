@@ -88,6 +88,21 @@ class ProductosByCategoriaAPIView(ListAPIView):
             )
         return queryset_list
 
+class ProductoByTextAPIView(ListAPIView):
+    serializer_class = ProductoDetailSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['nombre', 'descripcion']
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Producto.objects.all()
+        query = self.request.GET.get("text")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(nombre__icontains=query)|
+                Q(descripcion__icontains=query)
+            )
+        return queryset_list
+
 class UsuarioLoginAPIView(APIView):
 
     def post(self, request, format=None):
