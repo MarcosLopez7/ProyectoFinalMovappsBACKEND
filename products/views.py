@@ -30,6 +30,7 @@ from .serializers import (
     UsuarioLoginSerializer,
     FleteListSerializer,
     CategoriaListSerializer,
+    UpdateAprobacionSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -197,23 +198,9 @@ class DireccionDestroyAPIView(DestroyAPIView):
 class FleteListAPIView(RetrieveAPIView):
     queryset = Flete.objects.all()
     serializer_class = FleteListSerializer
-"""
-class UsuarioLoginAPIView(APIView):
-    permission_classes = [AllowAny]
-    serializer_class = UsuarioLoginSerializer
 
-    def post(self, request, *args, **kwargs):
-        data = request.data
-        serializer = UsuarioLoginSerializer(data=data)
-"""
-@csrf_protect
-def login(request):
-
-    if request.method == 'POST':
-
-        return HttpResponse({'email': request.POST.get('email', ''),
-                             'password': request.POST.get('password', '')})
-
-    else:
-        return HttpResponse("Probando")
+class UpdateProductoAprobacionAPIVIew(UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = UpdateAprobacionSerializer
+    lookup_field = 'pk'
 

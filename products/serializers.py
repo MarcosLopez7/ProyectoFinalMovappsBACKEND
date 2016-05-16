@@ -49,8 +49,8 @@ class CreateProductoSerializer(ModelSerializer):
 class ProductoDetailSerializer(ModelSerializer):
     class Meta:
         model = Producto
-        fields = ('pk', 'nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido', 'usuario',
-                  'categoria')
+        fields = ('pk', 'nombre', 'descripcion', 'precio', 'foto', 'ultima_modificacion', 'aprobado', 'vendido',
+                  'usuario', 'categoria')
 
 class CreateCompraSerializer(ModelSerializer):
     class Meta:
@@ -88,3 +88,8 @@ class FleteListSerializer():
     class Meta:
         model = Flete
         fields = ('pk', 'nombre', 'precio')
+
+class UpdateAprobacionSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('ultima_modificacion', 'aprobado')
